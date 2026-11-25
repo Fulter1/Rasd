@@ -1,0 +1,9 @@
+export type DensityLevel = 'low' | 'medium' | 'high';
+export type SourceMode = 'demo' | 'live';
+export type BoundingBox = { x: number; y: number; width: number; height: number; score?: number };
+export type Zone = { id: string; name: string; people: number; density_level: DensityLevel; density_score: number; updated_at: string; history: { time: string; value: number }[] };
+export type AnalysisResult = { person_count: number; density_level: DensityLevel; density_score: number | null; confidence: number | null; boxes: BoundingBox[]; processing_time_ms: number; source: SourceMode };
+export type ForecastRequest = { zone_id: string; horizon_minutes: number };
+export type ForecastResult = { zone_id: string; observed: { time: string; value: number }[]; predicted: { time: string; value: number }[]; confidence: number | null; horizon_minutes: number; source: SourceMode; sufficient_data: boolean };
+export type SimulationRequest = { zone_id: string; initial_people: number; entry_rate: number; exit_rate: number; duration_minutes: number };
+export type SimulationResult = { baseline: { minute: number; people: number }[]; scenario: { minute: number; people: number }[]; source: SourceMode; disclaimer: string };

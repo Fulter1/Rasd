@@ -1,0 +1,1 @@
+import { NextRequest, NextResponse } from 'next/server';import {demoZones} from '@/lib/demo';import {forward,isDemo} from '@/lib/server';export async function GET(req:NextRequest){return isDemo(req)?NextResponse.json(demoZones,{headers:{'Cache-Control':'no-store'}}):forward(req,'zones');}
